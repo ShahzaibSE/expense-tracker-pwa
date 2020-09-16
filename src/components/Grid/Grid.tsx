@@ -1,5 +1,6 @@
 import React from 'react'
 import {Grid, Card} from "@material-ui/core"
+import {Fade} from "react-awesome-reveal"
 // Assets.
 import {useStyles} from "./Grid.style"
 // Context
@@ -14,23 +15,25 @@ import AddTransaction from "./../AddTransaction/AddTransaction"
 const GridComponent = () => {
     const classes = useStyles()
     return (
-        <div>
-            <Grid container>
-                <Grid item sm={12} md={12} lg={12}>
-                        <Card className={classes.root}> 
-                            <GlobalProvider>
-                                {/* <div className="App"> */}
-                                <Header/>
-                                <Balance/>
-                                <IncomeExpense/>
-                                <TransactionList/>
-                                <AddTransaction/>
-                                {/* </div> */}
-                            </GlobalProvider>
-                        </Card>
-                </Grid>
-            </Grid>  
-        </div>
+        <Fade duration={3000}>
+            <div>
+                <Grid container>
+                    <Grid item sm={12} md={12} lg={12}>
+                            <Card className={classes.root}> 
+                                <GlobalProvider>
+                                    {/* <div className="App"> */}
+                                    <Header/>
+                                    <Balance/>
+                                    <IncomeExpense/>
+                                    <TransactionList/>
+                                    <AddTransaction/>
+                                    {/* </div> */}
+                                </GlobalProvider>
+                            </Card>
+                    </Grid>
+                </Grid>  
+            </div>
+        </Fade>
     )
 }
 
