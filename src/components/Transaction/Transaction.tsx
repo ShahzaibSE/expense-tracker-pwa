@@ -17,12 +17,13 @@ const Transaction = ({transaction}:any) => {
     const {deleteTransaction} = useContext(globalContext)
     //
     return (
-        <ListItem style={transaction.amount < 0 ? expenseTheme : incomeTheme}>
-            <ListItemText primary={transaction.text}
+        <ListItem key={transaction} style={transaction.amount < 0 ? expenseTheme : incomeTheme}>
+            <ListItemText key={transaction} primary={transaction.text}
                           secondary= {`${sign}$${Math.abs(transaction.amount)}`}/>
-                  <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete">
-                      <DeleteIcon onClick={()=>deleteTransaction(transaction.id)} />
+                  <ListItemSecondaryAction key={transaction}>
+                    <IconButton key={transaction} edge="end" aria-label="delete"
+                      onClick={()=>deleteTransaction(transaction.id)}>
+                      <DeleteIcon/>
                     </IconButton>
                   </ListItemSecondaryAction>
         </ListItem>
