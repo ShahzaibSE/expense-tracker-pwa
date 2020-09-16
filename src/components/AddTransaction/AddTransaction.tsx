@@ -14,8 +14,8 @@ export const AddTransaction = () => {
     const [amount, setAmount] = React.useState('')
     let {addTransaction} = useContext(globalContext)
     let classes = useStyles()
-    const text_field: any | null = useRef(null)
-    const amount_field: any | null = useRef(null)
+    const text_field: any | null = document.getElementById('text_field')
+    const amount_field: any | null = document.getElementById('amount_field')
     let isText = true
     let isAmount = true
     // e for event.
@@ -26,7 +26,9 @@ export const AddTransaction = () => {
             text,
             amount: +amount
         }
-        if (text_field.current.value && amount_field.current.value) {
+        if (text_field !== null && amount_field !== null) {
+            console.log("Transaction")
+            console.log(new_transaction)
             addTransaction(new_transaction)
             setText('')
             setAmount('')
@@ -52,7 +54,7 @@ export const AddTransaction = () => {
                 <input type="text" value={text} 
                        onChange={(e)=>{setText(e.target.value)}} placeholder="Enter text..." />
                 </div> */}
-                <TextField ref={text_field} id="text_field" label="Text" variant="outlined"
+                <TextField id="text_field" label="Text" variant="outlined"
                 value={text} onChange={(e)=>{setText(e.target.value)}}></TextField><br/>
                 {/* <div className="form-control">
                 <label htmlFor="amount">Amount <br />
@@ -60,7 +62,7 @@ export const AddTransaction = () => {
                 <input type="number" value={amount} onChange={(e)=>{setAmount(e.target.value)}}
                  placeholder="Enter amount..." />
                 </div> */}
-                <TextField ref={amount_field} id="amount_field" label="Amount" variant="outlined" value={amount} onChange={(e)=>{setAmount(e.target.value)}}>
+                <TextField id="amount_field" label="Amount" variant="outlined" value={amount} onChange={(e)=>{setAmount(e.target.value)}}>
                 </TextField>
                 <br/>
                 <br/>
