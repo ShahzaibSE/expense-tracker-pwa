@@ -9,7 +9,7 @@ import {globalContext} from "./../../context/GlobalContext"
 import {useStyles, theme} from "./AddTransaction.style"
 
 
-export const AddTransactionComponent = () => {
+export const AddTransaction = () => {
     const [text, setText] = React.useState('')
     const [amount, setAmount] = React.useState('')
     let {addTransaction} = useContext(globalContext)
@@ -32,7 +32,6 @@ export const AddTransactionComponent = () => {
             setAmount('')
         } else if(!text){
             isText = false
-            
         }else if (!amount) {
             isAmount = false
         }
@@ -74,3 +73,5 @@ export const AddTransactionComponent = () => {
         </div>
     )
 }
+
+export default AddTransaction
