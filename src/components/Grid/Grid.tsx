@@ -16,7 +16,7 @@ const GridComponent = () => {
     return (
         <div>
             <Grid container>
-                <Grid item xs={12} lg={12}>
+                <Grid item sm={12} md={12} lg={12}>
                         <Card className={classes.root}> 
                             <GlobalProvider>
                                 {/* <div className="App"> */}
