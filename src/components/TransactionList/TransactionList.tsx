@@ -1,19 +1,12 @@
 import React, {useContext, useState} from 'react'
 import {globalContext} from "../../context/GlobalContext"
-import {Grid, List, makeStyles} from "@material-ui/core"
+import {Grid, List } from "@material-ui/core"
+import {AnimationWrapper} from "react-hover-animation"
 // Component.
 import Transaction from "./../Transaction/Transaction"
+// Assets.
+import {useStyles} from "./TransactionList.style"
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
-    // position: 'relative',
-    overflow: 'scroll',
-    maxHeight: 250,
-  }
-}));
 
 const TransactionList = () => {
   const context = useContext(globalContext)
@@ -27,7 +20,16 @@ const TransactionList = () => {
         <Grid item sm={12} md={12} lg={12}> 
          <h3>History</h3>
          <List dense={dense} className={`${classes.root}`}>
-          {transactions.map((transaction:any)=>(<Transaction transaction={transaction}/>))}
+          {
+          transactions.map((transaction:any)=>(
+              <AnimationWrapper config={{
+                  transform:{initial:'scale(0.9)',onHover:'scale(1)'},
+                  opacity: {initial:'1',onHover:'1'}
+              }}>
+                <Transaction transaction={transaction}/>
+              </AnimationWrapper>
+            )
+          )}
          </List>
         {/* <h3>History</h3>
         <ul className="list">
